@@ -9,7 +9,12 @@ const config: Config = {
         "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                lightBg: "#ffffff",
+                darkBg: "#283A4B",
+            },
+        },
     },
     darkMode: "class",
     plugins: [
@@ -22,11 +27,16 @@ const config: Config = {
             themes: {
                 light: {
                     layout: {},
-                    colors: {},
+                    colors: {
+                        background: "#FFFDEF",
+                    },
+                    
                 },
                 dark: {
                     layout: {},
-                    colors: {},
+                    colors: {
+                        background: "#121A2F",
+                    },
                 },
             },
         }),

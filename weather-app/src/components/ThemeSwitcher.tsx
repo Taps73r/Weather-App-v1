@@ -1,8 +1,10 @@
 "use client";
 
-import { Button } from "@nextui-org/react";
+import { Switch } from "@nextui-org/react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { SunIcon } from "./SunIcon";
+import { MoonIcon } from "./MoonIcon";
 
 export function ThemeSwitcher() {
     const [mounted, setMounted] = useState<boolean>(false);
@@ -15,13 +17,17 @@ export function ThemeSwitcher() {
     if (!mounted) return null;
 
     return (
-        <div className="flex gap-4">
-            <Button size="sm" variant="flat" onClick={() => setTheme("light")}>
-                Light
-            </Button>
-            <Button size="sm" variant="flat" onClick={() => setTheme("dark")}>
-                Dark
-            </Button>
+        <div className="flex flex-row justify-end p-8">
+            <Switch
+                checked={theme === "dark"}
+                onChange={(e) => setTheme(e.target.checked ? "dark" : "light")}
+                size="lg"
+                color="primary"
+                startContent={<SunIcon />}
+                endContent={<MoonIcon />}
+            >
+                {theme === "dark" ? "Dark mode" : "Light mode"}
+            </Switch>
         </div>
     );
 }

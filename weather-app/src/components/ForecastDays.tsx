@@ -22,10 +22,12 @@ export function ForecastDays() {
     }, [city, dispatch]);
 
     return (
-        <section className="flex flex-row gap-10 justify-center">
+        <section className="flex flex-row gap-10 justify-center mt-20">
             {data?.forecast.forecastday.map((day) => (
                 <DayCard
                     key={day.date_epoch}
+                    region={data.location.region}
+                    country={data.location.country}
                     date={day.date}
                     maxTemp={day.day.maxtemp_c}
                     minTemp={day.day.mintemp_c}
