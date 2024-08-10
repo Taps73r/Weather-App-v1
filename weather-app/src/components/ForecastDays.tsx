@@ -22,9 +22,19 @@ export function ForecastDays() {
     }, [city, dispatch]);
 
     return (
-        <section>
+        <section className="flex flex-row gap-10 justify-center">
             {data?.forecast.forecastday.map((day) => (
-                <DayCard key={day.date_epoch} />
+                <DayCard
+                    key={day.date_epoch}
+                    date={day.date}
+                    maxTemp={day.day.maxtemp_c}
+                    minTemp={day.day.mintemp_c}
+                    avgTemp={day.day.avgtemp_c}
+                    condition={day.day.condition}
+                    rainChance={day.day.daily_chance_of_rain}
+                    snowChance={day.day.daily_chance_of_snow}
+                    windSpeed={day.day.maxwind_kph}
+                />
             ))}
         </section>
     );
