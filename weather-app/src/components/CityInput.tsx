@@ -43,7 +43,7 @@ export function CityInput() {
     return (
         <div className="flex flex-row justify-center gap-4 mt-6">
             <Input
-                className="max-w-sm text-4xl"
+                className="560:max-w-sm min-w-[190px] w-[50%] text-4xl"
                 variant="faded"
                 color="default"
                 label="City"

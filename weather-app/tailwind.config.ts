@@ -14,6 +14,10 @@ const config: Config = {
                 lightBg: "#ffffff",
                 darkBg: "#283A4B",
             },
+            screens: {
+                "1080px": "1080px",
+                "560px": "560px",
+            },
         },
     },
     darkMode: "class",
@@ -30,7 +34,6 @@ const config: Config = {
                     colors: {
                         background: "#FFFDEF",
                     },
-                    
                 },
                 dark: {
                     layout: {},

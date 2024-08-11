@@ -54,7 +54,7 @@ export function DayCard(props: IDayCardProps) {
                         src={`https:${props.condition.icon}`}
                         alt={props.condition.text}
                     />
-                    <p className="lg:text-3xl pb-3 font-bold">
+                    <p className="text-3xl pb-3 font-bold">
                         {props.maxTemp}°C
                     </p>
                     <div className="flex flex-row pb-[50px] justify-center w-full gap-1 items-center font-normal text-xl">
