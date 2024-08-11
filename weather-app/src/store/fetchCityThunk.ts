@@ -6,7 +6,6 @@ export const fetchCity = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await axios.get("http://ipinfo.io");
-            console.log(response.data);
             return response.data.city;
         } catch (error) {
             if (axios.isAxiosError(error)) {
