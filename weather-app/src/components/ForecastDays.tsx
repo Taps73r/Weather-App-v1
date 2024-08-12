@@ -22,23 +22,25 @@ export function ForecastDays() {
         }
     }, [city, location, dispatch]);
 
-    return (
-        <section className="flex 1080px:flex-row gap-10 justify-center mt-20 flex-col">
-            {data?.forecast.forecastday.map((day) => (
-                <DayCard
-                    key={day.date_epoch}
-                    region={data.location.region}
-                    country={data.location.country}
-                    date={day.date}
-                    maxTemp={day.day.maxtemp_c}
-                    minTemp={day.day.mintemp_c}
-                    avgTemp={day.day.avgtemp_c}
-                    condition={day.day.condition}
-                    rainChance={day.day.daily_chance_of_rain}
-                    snowChance={day.day.daily_chance_of_snow}
-                    windSpeed={day.day.maxwind_kph}
-                />
-            ))}
-        </section>
-    );
+    if (data) {
+        return (
+            <section className="flex 1080px:flex-row gap-10 justify-center pb-8 mt-14 flex-col">
+                {data?.forecast.forecastday.map((day) => (
+                    <DayCard
+                        key={day.date_epoch}
+                        region={data.location.region}
+                        country={data.location.country}
+                        date={day.date}
+                        maxTemp={day.day.maxtemp_c}
+                        minTemp={day.day.mintemp_c}
+                        avgTemp={day.day.avgtemp_c}
+                        condition={day.day.condition}
+                        rainChance={day.day.daily_chance_of_rain}
+                        snowChance={day.day.daily_chance_of_snow}
+                        windSpeed={day.day.maxwind_kph}
+                    />
+                ))}
+            </section>
+        );
+    }
 }

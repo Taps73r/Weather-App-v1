@@ -5,15 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { fetchCity } from "@/store/fetchCityThunk";
 import { setCity } from "@/store/userPreferences";
-import { forecastDaysWeather } from "@/store/weatherThunks";
 import { Button, Input } from "@nextui-org/react";
 
 export function CityInput() {
     const dispatch = useDispatch<AppDispatch>();
-    const city = useSelector(
-        (state: RootState) => state.userPreferencesReducer.city
+    const { city, loading } = useSelector(
+        (state: RootState) => state.userPreferencesReducer
     );
-    const loading = useSelector(
+    const loadingWeather = useSelector(
         (state: RootState) => state.forecastWeatherReducer.loading
     );
 
@@ -53,7 +52,7 @@ export function CityInput() {
             <Button
                 className="max-w-sm h-[56px] text-md"
                 variant="faded"
-                isLoading={loading}
+                isLoading={loading || loadingWeather}
                 onClick={handleButtonClick}
             >
                 Find

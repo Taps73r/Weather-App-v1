@@ -6,7 +6,7 @@ export const forecastDaysWeather = createAsyncThunk(
     async (city: string, { rejectWithValue }) => {
         try {
             const response = await axios.get(
-                `https://api.weatherapi.com/v1/forecast.json`,
+                `${process.env.NEXT_PUBLIC_API_WEATHER}/forecast.json`,
                 {
                     params: {
                         q: city,
