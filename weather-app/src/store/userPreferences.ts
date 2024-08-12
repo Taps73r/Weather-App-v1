@@ -3,6 +3,7 @@ import { fetchCity } from "./fetchCityThunk";
 
 interface UserPreferencesState {
     city: string;
+    location: string;
     language: string;
     loading: boolean;
     error: string | null;
@@ -10,6 +11,7 @@ interface UserPreferencesState {
 
 const initialState: UserPreferencesState = {
     city: "",
+    location: "",
     language: "en",
     loading: false,
     error: null,
@@ -24,6 +26,12 @@ const userPreferencesSlice = createSlice({
         },
         setLanguage(state, action: PayloadAction<string>) {
             state.language = action.payload;
+        },
+        setLocation(state, action: PayloadAction<string>) {
+            state.location = action.payload;
+        },
+        setError(state, action: PayloadAction<string>) {
+            state.error = action.payload;
         },
     },
     extraReducers: (builder) => {
@@ -43,5 +51,5 @@ const userPreferencesSlice = createSlice({
     },
 });
 
-export const { setCity, setLanguage } = userPreferencesSlice.actions;
+export const { setCity, setLanguage, setLocation, setError } = userPreferencesSlice.actions;
 export default userPreferencesSlice.reducer;

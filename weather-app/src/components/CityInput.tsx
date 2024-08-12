@@ -32,18 +32,16 @@ export function CityInput() {
     const handleButtonClick = () => {
         if (city) {
             dispatch(setCity(inputCity));
-            dispatch(forecastDaysWeather(inputCity));
         }
         if (!city) {
             dispatch(fetchCity());
-            dispatch(forecastDaysWeather(inputCity));
         }
     };
 
     return (
         <div className="flex flex-row justify-center gap-4 mt-6">
             <Input
-                className="560:max-w-sm min-w-[190px] w-[50%] text-4xl"
+                className="560:w-sm min-w-[190px] w-[50%] text-4xl"
                 variant="faded"
                 color="default"
                 label="City"

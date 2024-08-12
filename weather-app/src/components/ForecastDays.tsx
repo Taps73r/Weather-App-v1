@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { forecastDaysWeather } from "@/store/weatherThunks";
+import { setError } from "@/store/userPreferences";
 import { DayCard } from "./DayCard";
 
 export function ForecastDays() {
@@ -11,15 +12,15 @@ export function ForecastDays() {
     const { data, loading, error } = useSelector(
         (state: RootState) => state.forecastWeatherReducer
     );
-    const city = useSelector(
-        (state: RootState) => state.userPreferencesReducer.city
+    const { location, city } = useSelector(
+        (state: RootState) => state.userPreferencesReducer
     );
 
     useEffect(() => {
         if (city) {
             dispatch(forecastDaysWeather(city));
         }
-    }, [city, dispatch]);
+    }, [city, location, dispatch]);
 
     return (
         <section className="flex 1080px:flex-row gap-10 justify-center mt-20 flex-col">
