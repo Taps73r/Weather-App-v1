@@ -4,7 +4,7 @@ import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 export default function Home() {
     return (
-        <div className="homepage">
+        <div>
             <ThemeSwitcher />
             <CityInput />
             <ForecastDays />

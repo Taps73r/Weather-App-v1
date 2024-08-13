@@ -9,7 +9,7 @@ import { Button, Input } from "@nextui-org/react";
 
 export function CityInput() {
     const dispatch = useDispatch<AppDispatch>();
-    const { city, loading } = useSelector(
+    const { city, loading, error } = useSelector(
         (state: RootState) => state.userPreferencesReducer
     );
     const loadingWeather = useSelector(

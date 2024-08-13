@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/store/store";
 import { forecastDaysWeather } from "@/store/weatherThunks";
@@ -8,10 +8,10 @@ import { DayCard } from "./DayCard";
 
 export function ForecastDays() {
     const dispatch = useDispatch<AppDispatch>();
-    const { data, loading, error } = useSelector(
+    const { data } = useSelector(
         (state: RootState) => state.forecastWeatherReducer
     );
-    const { location, city } = useSelector(
+    const { location, city, error } = useSelector(
         (state: RootState) => state.userPreferencesReducer
     );
 
@@ -42,4 +42,24 @@ export function ForecastDays() {
             </section>
         );
     }
+
+    if (error) {
+        return (
+            <div className="flex flex-col items-center justify-center mt-14">
+                <p className="text-red-500">Error fetching weather data.</p>
+                <p>
+                    Please ensure that geolocation is enabled in your browser.
+                </p>
+                <p>If geolocation is enabled, try refreshing the page.</p>
+                <button
+                    className="mt-4 p-2 bg-blue-500 text-white rounded"
+                    onClick={() => window.location.reload()}
+                >
+                    Refresh Page
+                </button>
+            </div>
+        );
+    }
+
+    return null;
 }
