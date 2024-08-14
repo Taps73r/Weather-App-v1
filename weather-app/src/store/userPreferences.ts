@@ -1,18 +1,16 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchCity } from "./fetchCityThunk";
 
-interface UserPreferencesState {
+interface IUserPreferencesState {
     city: string;
     location: string;
-    language: string;
     loading: boolean;
     error: string | null;
 }
 
-const initialState: UserPreferencesState = {
+const initialState: IUserPreferencesState = {
     city: "",
     location: "",
-    language: "en",
     loading: false,
     error: null,
 };
@@ -23,9 +21,6 @@ const userPreferencesSlice = createSlice({
     reducers: {
         setCity(state, action: PayloadAction<string>) {
             state.city = action.payload;
-        },
-        setLanguage(state, action: PayloadAction<string>) {
-            state.language = action.payload;
         },
         setLocation(state, action: PayloadAction<string>) {
             state.location = action.payload;
@@ -51,5 +46,5 @@ const userPreferencesSlice = createSlice({
     },
 });
 
-export const { setCity, setLanguage, setLocation, setError } = userPreferencesSlice.actions;
+export const { setCity, setLocation, setError } = userPreferencesSlice.actions;
 export default userPreferencesSlice.reducer;

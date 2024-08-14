@@ -6,10 +6,11 @@ import { AppDispatch, RootState } from "@/store/store";
 import { fetchCity } from "@/store/fetchCityThunk";
 import { setCity } from "@/store/userPreferences";
 import { Button, Input } from "@nextui-org/react";
+import { clearData } from "@/store/forecastWeather";
 
 export function CityInput() {
     const dispatch = useDispatch<AppDispatch>();
-    const { city, loading, error } = useSelector(
+    const { city, loading } = useSelector(
         (state: RootState) => state.userPreferencesReducer
     );
     const loadingWeather = useSelector(
@@ -29,10 +30,12 @@ export function CityInput() {
     };
 
     const handleButtonClick = () => {
-        if (city) {
+        if (inputCity) {
+            dispatch(clearData());
             dispatch(setCity(inputCity));
         }
-        if (!city) {
+        if (!inputCity) {
+            dispatch(clearData());
             dispatch(fetchCity());
         }
     };

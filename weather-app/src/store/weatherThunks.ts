@@ -18,9 +18,12 @@ export const forecastDaysWeather = createAsyncThunk(
             return response.data;
         } catch (error) {
             if (axios.isAxiosError(error)) {
-                return rejectWithValue(error.response?.data);
+                const errorMessage =
+                    error.response?.data?.error?.message ||
+                    "Failed to fetch weather data";
+                return rejectWithValue(errorMessage);
             } else {
-                throw error;
+                return rejectWithValue("An unknown error occurred");
             }
         }
     }
